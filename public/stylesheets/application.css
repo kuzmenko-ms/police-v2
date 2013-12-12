@@ -1,0 +1,259 @@
+
+#toTop {
+width:100px;
+border:1px solid #ccc;
+background:#f7f7f7;
+text-align:center;
+padding:5px;
+position:fixed;
+bottom:10px; /* отступ кнопки от нижнего края страницы*/
+right:10px;
+cursor:pointer;
+display:none;
+color:#333;
+font-family:verdana;
+font-size:11px;
+}
+
+img{border:none;}
+	pre{
+		display:block;
+		font:12px "Courier New", Courier, monospace;
+		padding:10px;
+		border:1px solid #bae2f0;
+		background:#e3f4f9;	
+		margin:.5em 0;
+		width:674px;
+		}	
+			
+    /* image replacement */
+        .graphic, #prevBtn, #nextBtn, #slider1prev, #slider1next{
+            margin:0;
+            padding:0;
+            display:block;
+            overflow:hidden;
+            text-indent:-8000px;
+            }
+    /* // image replacement */
+			
+	#container{	
+		margin:0 auto;
+		position:relative;
+		text-align:left;
+		width:696px;
+		background:#fff;		
+		margin-bottom:2em;
+		}	
+	#header{
+		height:80px;
+		line-height:80px;
+		background:#5DC9E1;
+		color:#fff;
+		}				
+	#content{
+		position:relative;
+		}			
+
+/* Easy Slider */
+
+	#slider ul, #slider li,
+	#slider2 ul, #slider2 li{
+		margin:0;
+		padding:0;
+		list-style:none;
+		}
+	#slider2{margin-top:1em;}
+	#slider li, #slider2 li{ 
+		/* 
+			define width and height of list item (slide)
+			entire slider area will adjust according to the parameters provided here
+		*/ 
+		width:696px;
+		height:241px;
+		overflow:hidden; 
+		}	
+	#prevBtn, #nextBtn,
+	#slider1next, #slider1prev{ 
+		display:block;
+		width:30px;
+		height:77px;
+		position:absolute;
+		left:-30px;
+		top:71px;
+		z-index:1000;
+		}	
+	#nextBtn, #slider1next{ 
+		left:696px;
+		}														
+	#prevBtn a, #nextBtn a,
+	#slider1next a, #slider1prev a{  
+		display:block;
+		position:relative;
+		width:30px;
+		height:77px;
+		background:url(../images/btn_prev.gif) no-repeat 0 0;	
+		}	
+	#nextBtn a, #slider1next a{ 
+		background:url(../images/btn_next.gif) no-repeat 0 0;	
+		}	
+		
+	/* numeric controls */	
+
+	ol#controls{
+		margin:1em 0;
+		padding:0;
+		height:28px;	
+		}
+	ol#controls li{
+		margin:0 10px 0 0; 
+		padding:0;
+		float:left;
+		list-style:none;
+		height:28px;
+		line-height:28px;
+		}
+	ol#controls li a{
+		float:left;
+		height:28px;
+		line-height:28px;
+		border:1px solid #ccc;
+		background:#DAF3F8;
+		color:#555;
+		padding:0 10px;
+		text-decoration:none;
+		}
+	ol#controls li.current a{
+		background:#5DC9E1;
+		color:#fff;
+		}
+	ol#controls li a:focus, #prevBtn a:focus, #nextBtn a:focus{outline:none;}
+	
+
+html, body{
+  height: 100%;
+  font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
+}
+
+body {
+  background-color: #EEE;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:visited {
+    color: green;
+}
+
+a:visited {
+    color: green;
+}
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 30px;
+  margin: 20px 0;
+}
+
+h3 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+#user_nav {
+    text-align: right;
+    padding-right: 15px;
+    padding-bottom: 10px;
+}
+
+.page_content {
+    margin-right: 0%;
+    width: 960px;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -45px; /* the bottom margin is the negative value of the footer's height */
+    background: white;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    padding: 10px 20px 0 20px;
+}
+
+.footer {
+    width: 960px;
+    margin: 0 auto;
+    height: 45px;
+    text-align: center;
+}
+
+
+
+ul#social-icons li {
+ display: block;
+ float: right;
+ 
+}
+
+.spacer {
+    margin: 10px 0;
+    font-size: 16px;
+    font-style:italic;
+}
+
+.forgot-password {
+    margin-top: 10px;
+    clear: both;
+}
+
+h1.site-title {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 20px 0 60px 0;
+}
+
+div.notice, div.alert{
+    padding: 20px 20px;
+    width: 600px;
+    font-size: 20px;
+    text-align: center;
+    margin: 10px auto;
+    color: black;
+}
+
+div.notice {
+        background-color:aliceblue;
+}
+
+div.alert {
+    background-color:lightsalmon;
+}
+
+div.share_text {
+    float: left;
+    margin: 0 0 0 10px;
+    width: 600px;
+}
+
+div.sharing {
+    padding-bottom: 40px;
+    overflow: hidden;
+}
+
+.share_image {
+    float: left;
+}
+div.sharing_form {
+    font-size: 10px;
+    margin: 25px 0;
+}
+
+.sharing_signup_call_to_action {
+ text-align: right;
+    padding: 50px 0;
+    font-size: 13px;
+}
+

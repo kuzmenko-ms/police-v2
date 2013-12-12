@@ -1,0 +1,72 @@
+<% if !current_user.nil? %>
+ 
+     <select size="1" id="dep" onchange=codeAddress()>
+	    <% @departments.each do |department| %>
+	    	<option name = "<%= department.name %>" email = "<%= department.email %>" address = "<%= department.address %>" phonenumber = "<%= department.phonenumber %>"><%= department.name %></option>
+	    <% end %>
+    </select>
+    <div class="sharing_form">
+      <%= render :partial => 'form' %>
+    <div id="map-canvas" style="width: 100%; height: 400px"></div>
+    </div>
+<% else %>
+    <div class="sharing_signup_call_to_action">
+      <%= link_to "Регистрация", new_user_registration_path %> или
+      <%= link_to "Авторизация", new_user_session_path %> Так же вы можете авторизоваться с помощью.
+      <%= render :partial => "devise/shared/social_unconnected" %>
+    </div>
+<% end %>
+<% if current_user.nil? %>
+<div id="container">
+
+	<div id="content">
+	
+		<div id="slider">
+			<ul>				
+				<li><a href=""><%= image_tag("01.jpg")%></a></li>
+				<li><a href=""><%= image_tag("02.jpg")%></a></li>
+				<li><a href=""><%= image_tag("03.jpg")%></a></li>
+				<li><a href=""><%= image_tag("04.jpg")%></a></li>
+				<li><a href=""><%= image_tag("05.jpg")%></a></li>		
+			</ul>
+		</div>
+			
+	
+	</div>
+
+</div>
+<% end %>
+<% if @sharings.empty? %>
+  <P>Вы первый!</P>
+<% end %>    
+
+<a href="" class="btn-slide"><h1>Отзывы↕ </h1></a>
+	<div id="panel">
+<% @sharings.each do |sharing| %>
+    <div class="sharing" style="clear:both;">
+      <%= link_to image_tag(sharing.user.photo.url(:mini), :class => 'share_image'), profile_path(sharing.user) %>
+      <div class="share_text">
+        <%= sharing.content %>
+        <br/>
+        <br/>
+        <%= sharing.created_at.strftime("%m/%d/%Y %I:%M%p GMT") %> | <%= link_to "Подробнее", sharing_path(sharing) %> |
+
+        <a href="http://twitter.com/share" 
+           class="twitter-share-button"
+           data-url="<%= sharing_url(sharing) %>"
+           data-text="<%= sharing.content %>"
+           data-count="horizontal">Tweet</a>
+ 
+
+        <fb:like href="<%= sharing_url(sharing) %>"
+                 ref="unique_tracking_code_per_referrer_goes_here"
+                 layout="button_count"
+                 show_faces="false"
+                 width="10"
+                 action="like"
+                 font="verdana">
+        </fb:like>
+
+      </div>
+    </div>
+<% end %>

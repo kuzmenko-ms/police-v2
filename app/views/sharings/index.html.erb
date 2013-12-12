@@ -1,9 +1,10 @@
 <% if !current_user.nil? %>
- 
-     <select size="1" id="dep" onchange=codeAddress()>
+ <%= simple_form_for(@sharing) do |f| %>
+     <select name="sharing[department]" size="1" id="dep" onchange=codeAddress()>
 	    <% @departments.each do |department| %>
 	    	<option name = "<%= department.name %>" email = "<%= department.email %>" address = "<%= department.address %>" phonenumber = "<%= department.phonenumber %>"><%= department.name %></option>
 	    <% end %>
+<% end %>
     </select>
     <div class="sharing_form">
       <%= render :partial => 'form' %>
@@ -46,7 +47,8 @@
     <div class="sharing" style="clear:both;">
       <%= link_to image_tag(sharing.user.photo.url(:mini), :class => 'share_image'), profile_path(sharing.user) %>
       <div class="share_text">
-        <%= sharing.content %>
+ 	<%= sharing.department %><br>
+         <%=sharing.user.display_name %>
         <br/>
         <br/>
         <%= sharing.created_at.strftime("%m/%d/%Y %I:%M%p GMT") %> | <%= link_to "Подробнее", sharing_path(sharing) %> |

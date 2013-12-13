@@ -1,6 +1,5 @@
 class SharingsController < ApplicationController
-
-  before_filter :authenticate_user!, :only => [:create, :new]
+  before_filter :authenticate_user!, :only => [:create, :new, :klim]
   
 def search
     @departments = Department.all
@@ -43,14 +42,12 @@ def search
     end
   end
 
- def destroy
-   @sharing = current_user.sharings.build(params[:sharing])
+def klim
+    @sharing = current_user.sharings.find(params[:id])
     @sharing.destroy
-
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: "Delete" }
-      format.json { head :no_content }
-      render :action => "destroy"
-    end
+   redirect_to(root_path)
+    
   end
+
 end
+

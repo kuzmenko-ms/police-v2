@@ -1,7 +1,10 @@
 OmniauthDeviseExample::Application.routes.draw do
-  resources :sharings
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => 'registrations'}
+match '/sha/:id', :controller => 'sharings', :action => 'klim', :as => 'klim_sharing', :via => :get
+
+resources :sharings
   
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => 'registrations'}
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -51,8 +54,9 @@ OmniauthDeviseExample::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "sharings#index"
 
+  
+root :to => "sharings#index"
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
@@ -60,4 +64,5 @@ OmniauthDeviseExample::Application.routes.draw do
   # match ':controller(/:action(/:id(.:format)))'
 
   match '/:id', :controller => 'profiles', :action => 'show', :as => 'profile', :via => :get
+
 end

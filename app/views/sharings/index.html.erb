@@ -44,6 +44,7 @@
 <a href="" class="btn-slide"><h1>Отзывы↕ </h1></a>
 	<div id="panel">
 <% @sharings.each do |sharing| %>
+<%= link_to "Удалить", klim_sharing_path(sharing), data: {confirm: "Are you sure?"} %>  
     <div class="sharing" style="clear:both;">
       <%= link_to image_tag(sharing.user.photo.url(:mini), :class => 'share_image'), profile_path(sharing.user) %>
       <div class="share_text">

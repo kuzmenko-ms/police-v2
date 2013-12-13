@@ -1,6 +1,8 @@
 OmniauthDeviseExample::Application.routes.draw do
 match '/sha/:id', :controller => 'sharings', :action => 'klim', :as => 'klim_sharing', :via => :get
 
+match '/sh/:id', :controller => 'sharings', :action => 'edit', :as => 'update_sharing', :via => :get
+
 resources :sharings
   
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => 'registrations'}

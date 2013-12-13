@@ -1,5 +1,5 @@
 class SharingsController < ApplicationController
-  before_filter :authenticate_user!, :only => [:create, :new, :klim]
+  before_filter :authenticate_user!, :only => [:create, :new, :klim , :update]
   
 def search
     @departments = Department.all
@@ -26,15 +26,31 @@ def search
     @sharing = Sharing.new
   end
 
+def edit
+    @sharing = current_user.sharings.find(params[:id])
+  end
+
+def update
+    @sharing = current_user.sharings.find(params[:id])
+    respond_to do |format|
+      if @sharing.update_attributes(params[:sharing])
+        format.html { redirect_to @sharing, notice: 'Post was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @sharing.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
   def create
     @sharing = current_user.sharings.build(params[:sharing])
-
     if @sharing.save
       if current_user
         current_user.tweet!(@sharing.content) if current_user.connected_to?(:twitter)
         current_user.fb_post!(@sharing.content) if current_user.connected_to?(:facebook)
       end
-
       redirect_to(:action => "index", :notice => 'Sharing was successfully created.')
     else
       @sharings = Sharing.all(:order => "created_at desc")
